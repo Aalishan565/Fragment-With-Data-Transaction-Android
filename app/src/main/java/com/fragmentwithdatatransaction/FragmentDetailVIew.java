@@ -1,17 +1,14 @@
 package com.fragmentwithdatatransaction;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.File;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by aalishan on 27/10/16.
@@ -27,11 +24,9 @@ public class FragmentDetailVIew extends Fragment {
     private TextView tvMoviYear;
 
     public static Fragment newInstance() {
-        // Bundle bundle=new Bundle();
-        // bundle.putString("arg1",arg1);
-        // bundle.putInt("arg2",arg2);
-        fragmentDetailVIew = new FragmentDetailVIew();
-        //fragment.setArguments(bundle);
+        if (fragmentDetailVIew==null) {
+            fragmentDetailVIew = new FragmentDetailVIew();
+        }
         return fragmentDetailVIew;
     }
 
@@ -43,9 +38,9 @@ public class FragmentDetailVIew extends Fragment {
             if (movieModel != null) {
                 tvMovieName.setText(movieModel.getTitle());
                 tvRating.setText(String.valueOf(movieModel.getRating()));
-//                tvCategory.setText((CharSequence) movieModel.getGenre());
+             //  tvCategory.setText((CharSequence) movieModel.getGenre());
                 tvMoviYear.setText(String.valueOf(movieModel.getReleaseYear()));
-              //  Bitmap bitmap = BitmapFactory.decodeFile(new File(movieModel.getImage()));
+                ImageLoader.getInstance().displayImage(movieModel.getImage(), ivMovieImage);
             }
         }
     }

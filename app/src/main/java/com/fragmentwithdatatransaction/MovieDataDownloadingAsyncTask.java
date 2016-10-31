@@ -20,7 +20,7 @@ import java.util.List;
  * Created by aalishan on 28/10/16.
  */
 public class MovieDataDownloadingAsyncTask extends AsyncTask<String, Void, List<MovieModel>> {
-    IMovieDownloadListener iMovieDownloadListener;
+    private IMovieDownloadListener iMovieDownloadListener;
     private HttpURLConnection connection;
     private BufferedReader reader;
     private List<MovieModel> mMovieModelList;
